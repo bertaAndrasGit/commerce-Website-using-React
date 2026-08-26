@@ -6,6 +6,7 @@ import Auth from "./pages/Auth";
 import Checkout from "./pages/Checkout";
 import NavBar from "./components/NavBar";
 import ProductDetails from "./pages/ProductDetails";
+import CartProvider from "./context/CartContext";
 
 
 
@@ -16,15 +17,17 @@ function App() {
 
   return (
     <AuthProvider>
-    <div className="app">
-      <NavBar/>
-      <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/auth" element={<Auth/>}></Route>
-        <Route path="/checkout" element={<Checkout/>}></Route>
-        <Route path="/products/:id" element={<ProductDetails/>}></Route>
-      </Routes>
-    </div>
+      <CartProvider>
+      <div className="app">
+        <NavBar/>
+        <Routes>
+          <Route path="/" element={<Home/>}></Route>
+          <Route path="/auth" element={<Auth/>}></Route>
+          <Route path="/checkout" element={<Checkout/>}></Route>
+          <Route path="/products/:id" element={<ProductDetails/>}></Route>
+        </Routes>
+      </div>
+      </CartProvider>
     </AuthProvider>
   );
 }
